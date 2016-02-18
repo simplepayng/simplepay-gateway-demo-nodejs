@@ -1,7 +1,8 @@
-# Simplepay Gateway - NodeJS Demo
+# SimplePay Gateway - NodeJS Demo
 
-Demo for how to implement SimplePay's Gateway on a NodeJS site.
+Demo that implements SimplePay's Gateway on a NodeJS site.
 
 Please run commands:
-$ npm install # to install dependencies
-$ npm run app # to run demo server
+
+* `$ npm install` # to install dependencies
+* `$ npm run app` # to run demo server
