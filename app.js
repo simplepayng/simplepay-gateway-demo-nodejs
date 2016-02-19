@@ -18,8 +18,12 @@ app.post('/verify', function (request, result) {
         .end(function (err, res) {
             if (err || !res.ok) {
                 result.redirect('/failed/');
-            } else {
-                result.redirect('/success/');
+            } else {  // even is http status code is 200 we still need to check transaction had issues or not
+                if (res.body.response_code === 20000){
+                    result.redirect('/success/');
+                }else{
+                    result.redirect('/failed/');
+                }
             }
         });
 });
