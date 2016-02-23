@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var privateKey = 'test_pr_demo';
 
 app.post('/verify', function (request, result) {
+    console.log('Transaction ID was: ', request.body.transaction_id); // we don't really need this here, is just an example
+    
     superAgent.post('https://checkout.simplepay.ng/v1/payments/verify/')
         .set('Content-Type', 'application/json')
         .auth(privateKey, '')
