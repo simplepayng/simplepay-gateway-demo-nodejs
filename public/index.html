@@ -102,7 +102,10 @@
         <div class="row margin-top-md">
             <div class="col-md-8">
                 <form id="checkout_form" method="post" action="/verify/">
-                    <input type="hidden" name="token" id="token" value="">
+                    <input type="hidden" name="sp_token" id="sp_token" value="">
+                    <input type="hidden" name="sp_status" id="sp_status" value="">
+                    <input type="hidden" name="sp_amount" id="sp_amount" value="">
+                    <input type="hidden" name="sp_currency" id="sp_currency" value="NGN">
                     <input type="hidden" name="transaction_id" id="transaction_id" value="">
                     <table class="table table-striped">
                         <thead>
@@ -178,7 +181,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Shipping Address</h2>
+                            <h3>Shipping Address</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -215,12 +218,15 @@
             </div>
         </div>
     </div>
-    <script src="https://checkout.simplepay.ng/simplepay.js"></script>
+    <script src="https://checkout.simplepay.ng/v2/simplepay.js"></script>
     <script type="text/javascript">
         // Use the "token" to validate the payment
-        function processPayment (token) {
-            // put token and transaction ID to be sent forward
-            $('#token').val(token);
+        function processPayment (token, paid) {
+            // put token, status, amount and transaction ID to be sent forward
+            // token, status and amount need to be passed forward
+            $('#sp_token').val(token);
+            $('#sp_status').val(paid);
+            $('#sp_amount').val(SimplePay.amountToLower($('#amount').val()));
             $('#transaction_id').val('1234TRID');
 
             $('#checkout_form').submit();
